@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface ButtonProps {
   text?: string
+  value?: string
   isDisabled?: boolean
   isLoading?: boolean
   type?: 'button' | 'submit' | 'reset'
@@ -12,11 +13,12 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline'
   className?: string
   icon?: IconDefinition
-  onClick?: () => void
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Button = ({
   text,
+  value,
   isDisabled,
   isLoading,
   type = 'submit',
@@ -54,6 +56,7 @@ export const Button = ({
       type={type}
       onClick={onClick}
       disabled={isDisabled || isLoading}
+      value={value}
     >
       {isLoading ? <SpinnerIcon /> : text}
       {icon && <FontAwesomeIcon icon={icon} />}
