@@ -36,14 +36,11 @@ export const Button = ({
 
   const secondaryClasses = 'bg-white text-primary border border-primary'
 
-  const outlineClasses = 'bg-inherit'
-
   const disabledClasses = 'opacity-60 pointer-events-none'
 
   const classes = clsx(defaultClasses, className, {
     [primaryClasses]: variant === 'primary',
     [secondaryClasses]: variant === 'secondary',
-    [outlineClasses]: variant === 'outline',
     'w-full': width === 'full',
     'w-1/2': width === '1/2',
     'w-fit': width === 'fit',

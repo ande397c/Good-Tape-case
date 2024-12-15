@@ -1,5 +1,8 @@
 # **Good Tape Code Test** 🧪😳
 
+## My decions and assumptions
+[See my thoughs and decicions here](./thoughts-and-decisions.md)
+
 Welcome, dear candidate, to the Good Tape Code Test!
 
 Crafting a meaningful test in the age of AI is a challenge, but we’re embracing it by focusing on what makes **you** unique. This isn’t about perfect answers; it’s about your **process**, **understanding**, and how you bring your ideas to life.

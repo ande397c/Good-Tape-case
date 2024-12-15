@@ -31,7 +31,6 @@ export const convertWebmToMp3 = async (webmBlob: Blob) => {
     )
 
     await Promise.race([loadPromise, timeoutPromise])
-    console.log('FFmpeg core files loaded successfully.')
   } catch (error) {
     console.error('Error loading FFmpeg core files:', error)
     throw new Error('Failed to load FFmpeg core files.')

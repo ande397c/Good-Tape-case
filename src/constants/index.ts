@@ -1,0 +1,1 @@
+// Array containing pre defined keywords to match with the good tape transcript

@@ -7,10 +7,13 @@ interface JokeCardProps {
 }
 
 export const JokeCard = ({ joke }: JokeCardProps) => {
-  const { isUttering, startUttering } = useUttering()
+  const { isUttering, startUttering, isSpeechSynthesisSupported } =
+    useUttering()
 
   const handleUttering = () => {
-    startUttering(joke)
+    if (isSpeechSynthesisSupported) {
+      startUttering(joke)
+    }
   }
 
   return (
@@ -20,12 +23,13 @@ export const JokeCard = ({ joke }: JokeCardProps) => {
         className="flex items-center justify-between gap-2 border border-grey p-3 rounded-md text-left"
       >
         <p>{joke}</p>
-
-        <FontAwesomeIcon
-          icon={faVolumeHigh}
-          color={isUttering ? '#853BFD' : 'inherit'}
-          className={isUttering ? 'scale-125' : ''}
-        />
+        {isSpeechSynthesisSupported && (
+          <FontAwesomeIcon
+            icon={faVolumeHigh}
+            color={isUttering ? '#853BFD' : 'inherit'}
+            className={isUttering ? 'animate-pulseScale' : ''}
+          />
+        )}
       </button>
     </>
   )

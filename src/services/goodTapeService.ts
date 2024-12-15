@@ -15,13 +15,11 @@ export const goodTapeService = async (audioBlob: Blob) => {
 
   formData.append('audio', audioBlob)
   formData.append('languageCode', 'en')
-  formData.append('transcriptionId', 'exampleTranscriptionId')
 
   try {
     const response = await axios.post(GOOD_TAPE_API_URL, formData, { headers })
     return response.data
   } catch (err) {
     console.error('Error uploading audio:', err)
-    throw err
   }
 }

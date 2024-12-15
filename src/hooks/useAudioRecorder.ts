@@ -4,7 +4,6 @@ import { convertWebmToMp3 } from '../utils/convertWebmToMp3'
 export const useAudioRecorder = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
-  const [mp3Blob, setMp3Blob] = useState<Blob | null>(null)
   const [errorOccurred, setErrorOccurred] = useState(false)
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
 
@@ -22,7 +21,6 @@ export const useAudioRecorder = () => {
   const startRecording = async () => {
     setErrorOccurred(false)
     setAudioBlob(null)
-    setMp3Blob(null)
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -43,7 +41,6 @@ export const useAudioRecorder = () => {
         // Convert to MP3
         try {
           const mp3 = await convertWebmToMp3(blob)
-          setMp3Blob(mp3)
           setAudioBlob(mp3)
         } catch (err) {
           console.error('Error converting to MP3:', err)
@@ -76,7 +73,7 @@ export const useAudioRecorder = () => {
     errorOccurred,
     hasRecordingSupport: !!navigator.mediaDevices && !!window.MediaRecorder,
     audioBlob,
-    mp3Blob,
+    setAudioBlob,
     startRecording,
     stopRecording
   }
