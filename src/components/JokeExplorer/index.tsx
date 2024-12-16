@@ -16,7 +16,7 @@ export const JokeExplorer = () => {
   const [keyword, setKeyword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [jokes, setJokes] = useState<TJoke[] | undefined>(undefined)
-  const [viewPreference, setViewPreference] = useState<TView>('carousel')
+  const [viewPreference, setViewPreference] = useState<TView>('list')
 
   const {
     isRecording,
@@ -82,7 +82,7 @@ export const JokeExplorer = () => {
             setSearchValue(e.target.value)
           }}
         />
-        <Button text="Search" width="1/2" isDisabled={searchValue == ''} />
+        <Button text="Search" width="fit" isDisabled={searchValue == ''} className='px-4' />
         <Button
           icon={isRecording ? faSquare : faMicrophone}
           type="button"
@@ -94,12 +94,14 @@ export const JokeExplorer = () => {
         />
       </form>
       {audioBlob && (
-        <Button
-          text="Use recording"
-          onClick={handleUpload}
-          className="mt-4"
-          isLoading={isLoading}
-        />
+        <div className='w-full sm:max-w-32'> 
+          <Button
+            text="Use recording"
+            onClick={handleUpload}
+            className="mt-4"
+            isLoading={isLoading}
+          />
+        </div>
       )}
 
       <section className="mt-4">

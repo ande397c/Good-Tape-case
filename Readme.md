@@ -1,8 +1,5 @@
 # **Good Tape Code Test** 🧪😳
 
-## Demo:
-https://dad-joke-transcriber.netlify.app/
-
 ## My decions and assumptions
 [See my thoughs and decicions here](./thoughts-and-decisions.md)
 
