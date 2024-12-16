@@ -24,6 +24,8 @@ npm run dev
 # or
 yarn dev
 ```
+**Remember to setup a local .env file containing the value for** 
+`VITE_GOOD_TAPE_API_KEY`
 
 ### Vite Configuration
 
