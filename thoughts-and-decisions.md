@@ -37,13 +37,26 @@ The project uses Vite for fast and efficient development. Below are the key conf
 - The proxy setup includes a path rewrite that removes the `/api` prefix before forwarding requests to the backend.
 
 ```javascript
-proxy: {
-  '/api': {
-    target: 'https://api.goodtape.io',
-    changeOrigin: true,
-    rewrite: path => path.replace(/^\/api/, '')
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://api.goodtape.io',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/, '')
+      }
+    },
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp'
+    }
+  },
+  optimizeDeps: {
+    exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util']
   }
-}
+})
 ```
 
 Cross-Origin Policies
@@ -68,30 +81,6 @@ optimizeDeps: {
 }
 ```
 
-
-## Key Features
-
-### Server Proxy
-
-- API requests to `/api` are proxied to `https://api.goodtape.io` to simplify local development and avoid CORS issues.
-- The proxy setup includes a path rewrite that removes the `/api` prefix before forwarding requests to the backend.
-
-```javascript
-proxy: {
-  '/api': {
-    target: 'https://api.goodtape.io',
-    changeOrigin: true,
-    rewrite: path => path.replace(/^\/api/, '')
-  }
-}
-```
-
-Cross-Origin Policies
-The following headers are set to enable SharedArrayBuffer usage, which is necessary for working with certain libraries like @ffmpeg/ffmpeg:
-```
-Cross-Origin-Opener-Policy: same-origin
-Cross-Origin-Embedder-Policy: require-corp
-```
 
 ### Tech and Tools Used:
 
